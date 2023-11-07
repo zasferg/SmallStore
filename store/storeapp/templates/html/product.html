@@ -1,0 +1,26 @@
+{% extends 'html/base.html' %}
+
+{% block content%}
+<div class="container">
+    <ul>
+      {% for pr in prods%}
+      <li>
+        
+            <p class="container-title"><a style="text-decoration: none;" href="{{pr.get_absolute_url}}">{{pr.title}}</a></p>
+            <p class="container-descr">{{pr.description}}</p>
+            {% if pr.photo %}
+            <p class="container-photo"><img id='photo'  width="100" height="100" src="{{pr.photo.url}}"></p>
+            {% endif %}
+            <p class="container-price">{{pr.price}} руб.</p>
+
+      </li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+
+</div>
+{% endblock  %}
+
+

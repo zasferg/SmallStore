@@ -1,0 +1,146 @@
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  background-color:  #FAF3F3;
+  position: relative;
+}
+
+
+    .topnav {
+  /*overflow: hidden;*/
+  background-color: #407C3A;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 1;
+
+
+}
+
+.topnav a {
+
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+    
+    .sidebar{
+  margin-top: -52px;
+  padding: 0;
+  width: 200px;
+  background-color: #FAF3F3;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  border-right: 2px solid #414741;
+
+}
+
+
+  .sidebar a{
+
+display: block;
+color: #414741;
+padding: 16px;
+text-decoration: none;
+font-size: 15px;
+
+}
+  .sidebar a:hover{
+    background-color:#929C91 
+  }
+
+  .sidebar a:active{
+    background-color:#929C91 
+  }
+
+  .container{
+
+
+
+    margin: 100px 300px;
+    width: 70%;
+    /*position:fixed;*/
+    overflow: hidden;
+
+
+}
+ li{
+    padding-top:  20px 30px;
+    list-style-type: none;
+    border-bottom: 1px solid  #414741;
+
+
+  }
+
+.container-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-decoration: none;
+  margin-left: 200px;
+}
+.container-descr {
+  text-decoration: none;
+  margin-left: 200px;
+  font-size: 10px;
+}
+
+.container-price {
+  text-decoration: none;
+  margin-left: 200px;
+}
+
+.container-photo {
+  position: absolute;
+  margin-top: -75px;
+
+} 
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.container-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-decoration: none;
+  margin-left: 200px;
+}
+.container-descr {
+  text-decoration: none;
+  margin-left: 200px;
+  font-size: 10px;
+}
+
+.container-price {
+  text-decoration: none;
+  margin-left: 200px;
+}
+
+.container-photo {
+  position: absolute;
+  margin-top: -75px;
+

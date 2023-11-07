@@ -1,0 +1,62 @@
+{% extends 'html/base.html'%}
+<style>
+  .text-right{
+    border: 1px solid black;
+
+</style>
+
+{% block content %}
+  <div class="container">
+    <h1 style=" margin-left: 300px;">Ваша корзина товаров</h1>
+    <table style="width:100%;">
+      <thead>
+        <tr class="table">
+        <th>Изображение</th>
+        <th>Продукт</th>
+        <th>Количество</th>
+        <th>Обновить</th>
+        <th>Удалить</th>
+        <th>Полная цена</th>
+        <th>Цена</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in basket %}
+        {% with product=item.product %}
+          <tr>
+            <td>
+              <a href="{{ product.get_absolute_url }}">
+                <img width='100px' height='100px'  src="{{ product.photo.url }}" alt="" />
+              </a>
+            </td>
+            <td>{{ product.title }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>
+              <form  action="{% url 'basket_add' product.slug %}" method="post" class="add">
+                {% for i in bp_form%}
+                <p></p><label>{{i.title}}</label>{{i}}</p>
+                {% endfor%}
+                {% csrf_token %}
+                <input type="submit" value="Обновить">
+              </form>
+            </td>
+            <td><a href="{% url 'basket_remove' product.slug %}">Удалить</a></td>
+            <td class="num">{{ item.price }} руб.</td>
+            <td class="num">{{ item.total_price }} руб.</td>
+          </tr>
+        {% endwith %}
+      {% endfor %}
+        <tr class="total">
+          <td>Итого:</td>
+          <td colspan="4"></td>
+          <td class="num">{{ basket.get_total_price }} руб.</td>
+        </tr>
+    </tbody>
+  </table>
+  <p class="text-right">
+    <a href="{% url 'main' %}" class="btn">Продолжить Шопинг</a>
+    <a href="{% url 'order_create' %}">Оформить заказ</a>
+  </p>
+  </div>
+{% endblock %}
+

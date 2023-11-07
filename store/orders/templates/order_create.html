@@ -1,0 +1,26 @@
+{% extends 'html/base.html'%}
+
+
+
+{% block content %}
+<div class="container">
+       <h1>Checkout</h1>
+    <div class="order-info">
+        <h3>Your order</h3>
+        <ul>
+            {% for item in basket %}
+                <li>
+                    {{ item.quantity }}шт. <span style="margin-left:20px;">{{ item.product.title }} </span>
+                    <span style="float:right;">${{ item.total_price }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p style="float:right;">Итого: {{ basket.get_total_price }}  руб.</p>
+    </div>
+    <form action="." method="post" class="order-form">
+        {{ form.as_p }}
+        <p><input type="submit" value="Place order"></p>
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}

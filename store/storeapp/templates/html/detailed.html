@@ -1,0 +1,35 @@
+{% extends 'html/base.html' %}
+
+{% block content %}
+<style>
+    .offset{
+        margin-left:500px;
+        padding:20px;
+
+    }
+</style>
+
+
+<div class="container">
+      {% if product.photo %}
+      <img align="left" style="margin-top:50px;" width="40%" height="40%" src="{{product.photo.url}}">
+   {% endif %}
+   <p class="offset" >Наименование товара: {{product.title}}</p>
+
+   <p class="offset" >Описание:{{product.description}}</p>
+
+   <h2 class="offset" style="">Цена:{{product.price}}</h2>
+    {% if request.user.is_authenticated%}
+        <form class="offset" action="{% url 'basket_add' product.slug %}" method="post">
+            <p>{{form}}</p>
+            <p></p><label>{{f.title}}</label>{{ f }}</p>
+            {% csrf_token %}
+        <input class="button" type="submit" value="Добавить в корзину">
+        </form>
+    {% else %}
+    <p>Для добавления заказа пожалуйста зарегистрируйтесь.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

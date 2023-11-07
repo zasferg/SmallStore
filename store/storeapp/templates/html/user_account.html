@@ -1,0 +1,37 @@
+{% extends 'html/base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+    {{title}}
+
+    <div> {% for ord in order %}
+    <ul>
+        <li>
+        <p>{%for item in order_item%}
+                {% if forloop.first %}
+                        <p>Мой заказ:{{ord.id}}</p>
+                            {% if item.order.id == ord.id %}
+                            {{item.quantity}} шт. {{item.product}}  <span style="float:right;">{{item.get_cost}}</span><br>
+                            {% endif %}
+                {% endif %}
+                            {% if item.order.id == ord.id %}
+                            {{item.quantity}} шт. {{item.product}}  <span style="float:right;">{{item.get_cost}}</span><br>
+                            {% endif %}
+                {% if forloop.last %}
+                            {% if item.order.id == ord.id %}
+                            {{item.quantity}} шт. {{item.product}}  <span style="float:right;">{{item.get_cost}}</span><br>
+                            {% endif %}
+                            <p>Nтого:{{ord.get_total_cost}}</p>
+                {% endif %}
+        {% endfor%}</p>
+        </li>
+    </ul>
+    {% endfor %}
+    </div>
+
+</div>
+
+
+{% endblock %}
