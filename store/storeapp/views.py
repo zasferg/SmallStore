@@ -109,11 +109,11 @@ class RegisterUser(DataMixin, CreateView):
         return redirect('registration')
 
 
-class UserPage(DataMixin,ListView):
+class UserPage(DataMixin,LoginRequiredMixin,ListView):
     model = OrderItem
     template_name = 'html/user_account.html'
     context_object_name = 'order_item'
-
+    login_url = 'login'
     def get_queryset(self,):
         return OrderItem.objects.filter(order__email=self.request.user.email).select_related('order','product')
 
