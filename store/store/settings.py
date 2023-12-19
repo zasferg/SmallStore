@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-b-fe_rc^x0x+9f1-tm5i$$^sx0+ob22gfy6di!y*z=ic!waq5@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
@@ -86,8 +87,8 @@ WSGI_APPLICATION = 'store.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase', # This is where you put the name of the db file.
-                 # If one doesn't exist, it will be created at migration time.
+        'NAME': 'mydatabase',
+
     }
 }
 
@@ -151,8 +152,9 @@ MEDIA_URL = '/media/'
 
 BASKET_SESSION_ID = '/basket/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# CELERY_BROKER_URL = "redis://localhost:6379"
-# CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 INTERNAL_IPS = [
     "127.0.0.1",

@@ -43,7 +43,7 @@ class ShowProduct(DataMixin,ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title=context["prods"])
+        c_def = self.get_user_context(title=context['prods'][0].cat)
         return dict(list(context.items()) + list(c_def.items()))
 
 
@@ -59,7 +59,7 @@ class ProdDetailed(DataMixin,ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(form = BasketAddProductForm())
+        c_def = self.get_user_context(form = BasketAddProductForm(),title=f'{context["object_list"]}')
         return dict(list(context.items()) + list(c_def.items()))
         return context
 
@@ -114,15 +114,16 @@ class UserPage(DataMixin,LoginRequiredMixin,ListView):
     template_name = 'html/user_account.html'
     context_object_name = 'order_item'
     login_url = 'login'
+
     def get_queryset(self,):
         return OrderItem.objects.filter(order__email=self.request.user.email).select_related('order','product')
-
 
     def get_context_data(self,*, object_list=None, **kwargs):
         context= super().get_context_data()
         c_def = self.get_user_context(order=Order.objects.filter(email=self.request.user.email),
                                       title=f'Личная страница {self.request.user.username}')
         return dict(list(context.items()) + list(c_def.items()))
+
 # @login_required(login_url='login')
 # def show_user_page(request):
 #         order_item=OrderItem.objects.filter(order__email=request.user.email).select_related('order','product')
