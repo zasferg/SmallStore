@@ -24,7 +24,7 @@ def order_create(request):
                                          quantity=item['quantity'])
 
             basket.clear()
-            order_created.delay(order.id)
+#            order_created.delay(order.id)
             return render(request, 'order_created.html',
                           {'order': order})
     else:
