@@ -1,10 +1,11 @@
 
 from django.urls import path
 from .views import *
+from django.views.decorators.cache import cache_page
 
 
 urlpatterns = [
-    path('',Main.as_view(),name='main'),
+    path('',cache_page(60)(Main.as_view()),name='main'),
     path('add_prod',AddProd.as_view(),name='add_product_page'),
     path('login',LoginUser.as_view(), name='login'),
     path('logout', logout_user, name='logout'),

@@ -1,5 +1,6 @@
 {% load static %}
 {% load store_tags %}
+{% load cache %}
 <html lang="en">
 
 
@@ -58,13 +59,14 @@
 
 
 <!--sidebar-->
-
+{% cache 60 sidebar %}
 <div class="sidebar">
     {% get_categories as cats %}
     <a href="{% url 'main' %}">Все категории</a>
     {% for cat in cats %}
     <a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
 {% endfor %}
+{% endcache %}
 
 </div>
 

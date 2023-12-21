@@ -5,7 +5,7 @@
 
 
 <div class="container">
-{% if request.user.groups.values.0.name ==  'moderators' %}
+{% if request.user.groups.values.0.name ==  'staff' %}
 <h1>{{title}}</h1>
 
 <form  style='padding:10px;' action="{%url 'add_product_page' %}" method="post" enctype="multipart/form-data">
