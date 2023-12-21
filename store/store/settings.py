@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-b-fe_rc^x0x+9f1-tm5i$$^sx0+ob22gfy6di!y*z=ic!waq5@
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['185.244.50.131']
+
 
 
 # Application definition
@@ -83,27 +84,18 @@ WSGI_APPLICATION = 'store.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
-
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mystorebase',
+        'USER': 'dapiakun',
+        'PASSWORD': 'Apekun071291.',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
 
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'mystorebase',
-#         'USER': 'admin',
-#         'PASSWORD': 'admin',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
 
 
 # Password validation
@@ -142,7 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -152,9 +144,8 @@ MEDIA_URL = '/media/'
 
 BASKET_SESSION_ID = '/basket/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+# CELERY_BROKER_URL = "redis://localhost:6379"
+# CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 INTERNAL_IPS = [
     "127.0.0.1",

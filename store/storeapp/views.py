@@ -64,10 +64,9 @@ class ProdDetailed(DataMixin,ListView):
         return context
 
 
-class AddProd(LoginRequiredMixin,GroupRequiredMixin, DataMixin,CreateView):
+class AddProd(LoginRequiredMixin, DataMixin,CreateView):
     form_class = ProductAddForm
     template_name = 'html/add_prod.html'
-    group_required = u'moderators'
 
 
     def get_context_data(self, **kwargs):
