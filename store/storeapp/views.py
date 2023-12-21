@@ -115,7 +115,7 @@ class UserPage(DataMixin,LoginRequiredMixin,ListView):
     login_url = 'login'
 
     def get_queryset(self,):
-        return OrderItem.objects.filter(order__email=self.request.user.email).select_related('order','product')
+        return OrderItem.objects.filter(order__email=self.request.user.email).select_related('order','product').distinct()
 
     def get_context_data(self,*, object_list=None, **kwargs):
         context= super().get_context_data()
